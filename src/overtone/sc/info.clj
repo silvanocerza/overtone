@@ -1,11 +1,12 @@
 (ns
-    ^{:doc "Functions for returning information regarding the connected SC server"
-      :author "Sam Aaron"}
-  overtone.sc.info
+ ^{:doc "Functions for returning information regarding the connected SC server"
+   :author "Sam Aaron"}
+ overtone.sc.info
   (:use [overtone.libs event counters]
-        [overtone.sc synth ugens node server]
+        [overtone.sc ugens node server]
         [overtone.sc.machinery.allocator]
-        [overtone.helpers lib]))
+        [overtone.helpers lib])
+  (:require [overtone.sc.synth :refer [defsynth]]))
 
 (defonce output-bus-count*   (atom nil))
 (defonce input-bus-count*    (atom nil))
@@ -54,7 +55,7 @@
        (let [args (:args msg)
              [nid nrid sr sd rps cr cd sso nob nib nab ncb nb nrs] args]
          (when (= (int nrid) (int response-id))
-            (deliver prom
+           (deliver prom
                     {:sample-rate (long sr)
                      :sample-dur sd
                      :radians-per-sample rps
@@ -67,7 +68,7 @@
                      :num-control-buses (long ncb)
                      :num-buffers (long nb)
                      :num-running-synths (long nrs)})
-            :overtone/remove-handler)))
+           :overtone/remove-handler)))
      (keyword (str "overtone.sc.info/get-server-info_" (gensym))))
     (let [synth-id (snd-server-info response-id)
           res      (deref! prom  "attempting to fetch server information")]

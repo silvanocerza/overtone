@@ -1,7 +1,7 @@
 (ns ^{:doc "Library of general purpose utility functions for Overtone
             internals."
       :author "Jeff Rose and Sam Aaron"}
-  overtone.helpers.lib
+ overtone.helpers.lib
   (:import [java.util ArrayList Collections]
            [java.util.concurrent TimeUnit TimeoutException]
            [java.io File])
@@ -103,29 +103,29 @@
    time."
   ([m fun] (callable-map m fun {}))
   ([m fun metadata]
-     (proxy [clojure.lang.Associative
-             clojure.lang.IFn
-             clojure.lang.IObj
-             clojure.lang.IMeta]
-         []
-       (count       [] (count m))
-       (seq         [] (seq m))
-       (cons        [[k v]] (callable-map (assoc m k v) fun metadata))
-       (empty       [] {})
-       (equiv       [o] (= o m))
-       (containsKey [k] (contains? m k))
-       (entryAt     [k] (map-entry k (get m k)))
-       (assoc       [k v] (callable-map (assoc m k v) fun metadata))
-       (valAt
-         ([k] (get m k))
-         ([k d] (get m k d)))
-       (invoke      [& args] (apply fun args))
-       (applyTo    ([args] (apply fun args)))
-       (toString   [] (if-let [ts (::to-string metadata)]
-                        (ts this)
-                        "Callable Map"))
-       (withMeta   [new-metadata] (callable-map m fun new-metadata))
-       (meta       [] metadata))))
+   (proxy [clojure.lang.Associative
+           clojure.lang.IFn
+           clojure.lang.IObj
+           clojure.lang.IMeta]
+          []
+     (count       [] (count m))
+     (seq         [] (seq m))
+     (cons        [[k v]] (callable-map (assoc m k v) fun metadata))
+     (empty       [] {})
+     (equiv       [o] (= o m))
+     (containsKey [k] (contains? m k))
+     (entryAt     [k] (map-entry k (get m k)))
+     (assoc       [k v] (callable-map (assoc m k v) fun metadata))
+     (valAt
+       ([k] (get m k))
+       ([k d] (get m k d)))
+     (invoke      [& args] (apply fun args))
+     (applyTo    ([args] (apply fun args)))
+     (toString   [] (if-let [ts (::to-string metadata)]
+                      (ts this)
+                      "Callable Map"))
+     (withMeta   [new-metadata] (callable-map m fun new-metadata))
+     (meta       [] metadata))))
 
 (defmacro defrecord-ifn
   "A helper macro for creating callable records with a var-args
@@ -189,8 +189,8 @@
         (recur (next args)
                (next names)
                (assoc arg-map
-                 (first names)
-                 (first args))))
+                      (first names)
+                      (first args))))
       arg-map)))
 
 (defmacro defunk [fn-name docstring args & body]
@@ -244,16 +244,16 @@
    ;=> ({:a 1} {:a 20} {:a 3} {:a 40} {:a 5})
   "
   ([maps n k f]
-     (update-every-n maps n 0 k f))
+   (update-every-n maps n 0 k f))
   ([maps n offset k f]
-     (concat
-      (take offset maps)
-      (map-indexed
-       (fn [i elem]
-         (if (zero? (mod i n))
-           (assoc elem k (f (get elem k)))
-           elem))
-       maps))))
+   (concat
+    (take offset maps)
+    (map-indexed
+     (fn [i elem]
+       (if (zero? (mod i n))
+         (assoc elem k (f (get elem k)))
+         elem))
+     maps))))
 
 
 (def DEFAULT-PROMISE-TIMEOUT 5000)
@@ -269,11 +269,11 @@
                           (deref! ref DEFAULT-PROMISE-TIMEOUT timeout-or-msg)
                           (deref! ref timeout-or-msg "")))
   ([ref timeout msg]
-     (let [timeout-indicator (gensym "deref-timeout")
-           res               (deref ref timeout timeout-indicator)]
-       (if (= timeout-indicator res)
-         (throw (TimeoutException. (str "deref! timeout error. Dereference took longer than " timeout " ms" (when-not (empty? msg) (str " whilst " msg)))))
-         res))))
+   (let [timeout-indicator (gensym "deref-timeout")
+         res               (deref ref timeout timeout-indicator)]
+     (if (= timeout-indicator res)
+       (throw (TimeoutException. (str "deref! timeout error. Dereference took longer than " timeout " ms" (when-not (empty? msg) (str " whilst " msg)))))
+       res))))
 
 (defn stringify-map-vals
   "converts a map by running all its vals through str
@@ -301,7 +301,7 @@
  / /_/ /| |/ /  __/ /  / /_/ /_/ / / / /  __/
  \\____/ |___/\\___/_/   \\__/\\____/_/ /_/\\___/
 
-   Collaborative Programmable Music. "version-str "
+   Collaborative Programmable Music. " version-str "
 
 
 " (welcome-message user-name) "
@@ -343,7 +343,7 @@
            (or (= :overtone.sc.machinery.ugen.fn-gen/ugen (:type gen))
                (= :overtone.sc.defcgen/cgen (:type gen))))
     (keyword (:name gen))
-        gen))
+    gen))
 
 (defn env-files
   "Returns the files that exist in the directory mentioned in env-var. Code from: https://stackoverflow.com/a/46840668/1005039 "
