@@ -1,16 +1,47 @@
-{:mvn/repos {"central" {:url "https://repo1.maven.org/maven2/"}
+{:description "Collaborative Programmable Music."
+ :url "http://overtone.github.io/"
+ :mailing-list {:name "overtone"
+                :archive "https://groups.google.com/group/overtone"
+                :post "overtone@googlegroups.com"}
+ :license {:name "The MIT License (MIT)"
+           :url "http://opensource.org/licenses/MIT"
+           :distribution :repo
+           :comments "Please use Overtone for good"}
+
+ :mvn/repos {"central" {:url "https://repo1.maven.org/maven2/"}
              "clojars" {:url "https://repo.clojars.org/"}}
- :paths ["src" "test" "./deps.edn"]
- :deps  {org.clojure/clojure {:mvn/version "1.10.1"}
-         org.clojure/data.json {:mvn/version "1.0.0"}
-         org.clojure/tools.deps.alpha {:mvn/version "0.9.745"}
-         net.java.dev.jna/jna {:mvn/version "5.6.0"}
-         overtone/ableton-link {:mvn/version "1.0.0-beta1"}
-         overtone/scsynth {:mvn/version "3.10.2"}
-         overtone/scsynth-extras {:mvn/version "3.10.2"}
-         commons-net/commons-net {:mvn/version"3.6"}
-         javax.jmdns/jmdns {:mvn/version "3.4.1"}
-         clj-glob/clj-glob {:mvn/version "1.0.0"}
-         clj-native/clj-native {:mvn/version "0.9.5"}
-         badigeon/badigeon {:git/url "https://github.com/EwenG/badigeon.git"
-                            :sha "55360471a57ad982ac89792c895933e1d2239625"}}}
+ :paths ["src"]
+
+ :aliases  {:test {:extra-paths ["test"]
+                   :extra-deps {io.github.cognitect-labs/test-runner {:git/tag "v0.5.1" :git/sha "dfb30dd"}
+                                bultitude/bultitude {:mvn/version "0.2.0"}
+                                polynome/polynome {:mvn/version "0.2.2"}}
+                   :main-opts ["-m" "cognitect.test-runner"]
+                   :exec-fn cognitect.test-runner.api/test}}
+
+ :jvm-opts ["-Xms512m" "-Xmx1g"           ; Minimum and maximum sizes of the heap
+            "-XX:MaxGCPauseMillis=20"     ; Specify a target of 20ms for max gc pauses
+            "-XX:MaxNewSize=257m"         ; Specify the max and min size of the new
+            "-XX:NewSize=256m"            ;  generation to be small
+            "-XX:+UseTLAB"                ; Uses thread-local object allocation blocks. This
+                                          ;  improves concurrency by reducing contention on
+                                          ;  the shared heap lock.
+            "-XX:MaxTenuringThreshold=0"] ; Makes the full NewSize available to every NewGC
+                                          ;  cycle, and reduces the pause time by not
+                                          ;  evaluating tenured objects. Technically, this
+                                          ;  setting promotes all live objects to the older
+                                          ;  generation, rather than copying them.
+
+ :deps {org.clojure/clojure {:mvn/version "1.10.1"}
+        org.clojure/data.json {:mvn/version "1.0.0"}
+        org.clojure/tools.deps.alpha {:mvn/version "0.9.745"}
+        net.java.dev.jna/jna {:mvn/version "5.6.0"}
+        overtone/ableton-link {:mvn/version "1.0.0-beta1"}
+        overtone/scsynth {:mvn/version "3.10.2"}
+        overtone/scsynth-extras {:mvn/version "3.10.2"}
+        commons-net/commons-net {:mvn/version "3.6"}
+        javax.jmdns/jmdns {:mvn/version "3.4.1"}
+        clj-glob/clj-glob {:mvn/version "1.0.0"}
+        clj-native/clj-native {:mvn/version "0.9.5"}
+        badigeon/badigeon {:git/url "https://github.com/EwenG/badigeon.git"
+                           :sha "55360471a57ad982ac89792c895933e1d2239625"}}}

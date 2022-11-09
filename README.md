@@ -15,23 +15,21 @@
          `Y888oo.____ooo888P'
             '"PP888888PP''
 
-
-
 # Collaborative Programmable Music.
 
 Overtone is an Open Source toolkit for designing synthesizers and
-collaborating with music.  It provides:
+collaborating with music. It provides:
 
-* A Clojure API to the SuperCollider synthesis engine
-* A growing library of musical functions (scales, chords, rhythms,
+- A Clojure API to the SuperCollider synthesis engine
+- A growing library of musical functions (scales, chords, rhythms,
   arpeggiators, etc.)
-* Metronome and timing system to support live-programming and sequencing
-* Plug and play MIDI device I/O
-* A full Open Sound Control (OSC) client and server implementation.
-* Pre-cache - a system for locally caching external assets such as .wav
+- Metronome and timing system to support live-programming and sequencing
+- Plug and play MIDI device I/O
+- A full Open Sound Control (OSC) client and server implementation.
+- Pre-cache - a system for locally caching external assets such as .wav
   files
-* An API for querying and fetching sounds from http://freesound.org
-* A global concurrent event stream
+- An API for querying and fetching sounds from http://freesound.org
+- A global concurrent event stream
 
 ## Quick Start
 
@@ -62,7 +60,6 @@ collaborating with music.  It provides:
 ```
 
 ### Making sounds
-
 
 ```clj
     ;; boot the server
@@ -101,8 +98,8 @@ https://github.com/overtone/overtone/raw/master/docs/cheatsheet/overtone-cheat-s
 
 A list of bands using Overtone to generate sounds:
 
-* [Meta-eX](http://meta-ex.com)
-* [Repl Electric](http://repl-electric.com)
+- [Meta-eX](http://meta-ex.com)
+- [Repl Electric](http://repl-electric.com)
 
 ## Community
 
@@ -125,38 +122,38 @@ Follow `@overtone` on Twitter: http://twitter.com/overtone
 
 Our main website is hosted on GitHub: http://overtone.github.io
 
-##  Videos
+## Videos
 
 ### Introductions
 
 Head over to Vimeo for a fast-paced 4 minute introduction to live-coding
 with Overtone to see what's possible
 
-  http://vimeo.com/22798433
+http://vimeo.com/22798433
 
 For a nice overview of the basics of creating and playing with
 synthesized instruments in Overtone checkout Philip Potter's 20 minute
 workshop:
 
-  http://skillsmatter.com/podcast/scala/clojurex-unpanel-2894
+http://skillsmatter.com/podcast/scala/clojurex-unpanel-2894
 
 Chris Ford also delivers a beautifully paced introduction to fundamental music
 concepts from basic sine waves to Bach's Goldberg Variations with live examples throughout:
 
-  http://skillsmatter.com/podcast/home/functional-composition
+http://skillsmatter.com/podcast/home/functional-composition
 
 There are also the following tutorials:
 
-* Setting up an Overtone Development Environment - Running on Edge
+- Setting up an Overtone Development Environment - Running on Edge
   http://vimeo.com/25102399
-* How to Hack Overtone with Emacs http://vimeo.com/25190186
+- How to Hack Overtone with Emacs http://vimeo.com/25190186
 
 ### Presentations
 
-* Rich Hickey - Harmonikit: http://www.youtube.com/watch?v=bhkdyCPYgLs
-* Sam Aaron - Programming Music With Overtone: http://www.youtube.com/watch?v=imoWGsipe4k
-* Chris Ford - Functional Composition: http://www.youtube.com/watch?v=Mfsnlbd-4xQ
-* Meta-eX - Live Coding with Meta-eX: https://www.youtube.com/watch?v=zJqH5bNcIN0
+- Rich Hickey - Harmonikit: http://www.youtube.com/watch?v=bhkdyCPYgLs
+- Sam Aaron - Programming Music With Overtone: http://www.youtube.com/watch?v=imoWGsipe4k
+- Chris Ford - Functional Composition: http://www.youtube.com/watch?v=Mfsnlbd-4xQ
+- Meta-eX - Live Coding with Meta-eX: https://www.youtube.com/watch?v=zJqH5bNcIN0
 
 ### Interviews
 
@@ -164,30 +161,29 @@ Overtone has generated quite a bit of interest. Here's a list of
 available interviews which go into further depth on the background and
 philosophy of Overtone:
 
-* http://twit.tv/show/floss-weekly/197
-* http://mostlylazy.com/2011/11/18/episode-0-0-2-sam-aaron-and-overtone-at-clojure-conj-2011/
-* http://codebassradio.net/2011/11/29/runtime-expectations-episode-13-hot-clojure-conj/
+- http://twit.tv/show/floss-weekly/197
+- http://mostlylazy.com/2011/11/18/episode-0-0-2-sam-aaron-and-overtone-at-clojure-conj-2011/
+- http://codebassradio.net/2011/11/29/runtime-expectations-episode-13-hot-clojure-conj/
   (scroll down to the section with Sam Aaron, Ghadi Shayban, and Daniel Spiewak)
-* http://clojure.com/blog/2012/01/04/take5-sam-aaron.html
+- http://clojure.com/blog/2012/01/04/take5-sam-aaron.html
 
 ### Performances
 
-* Repl Electric: https://vimeo.com/95988263
-* Piotr Jagielski‏: https://www.youtube.com/watch?v=r8YKC7Qugm8
-* Sam Aaron Live @ Arnolfini:  https://vimeo.com/46867490
-* Meta-eX Live @ Music Tech Fest: http://youtu.be/zJqH5bNcIN0?t=15m25s
-
+- Repl Electric: https://vimeo.com/95988263
+- Piotr Jagielski‏: https://www.youtube.com/watch?v=r8YKC7Qugm8
+- Sam Aaron Live @ Arnolfini: https://vimeo.com/46867490
+- Meta-eX Live @ Music Tech Fest: http://youtu.be/zJqH5bNcIN0?t=15m25s
 
 ## Source Repository
 
 Downloads and the source repository can be found on GitHub:
 
-  http://github.com/overtone/overtone
+http://github.com/overtone/overtone
 
 Clone the repository on GitHub to get started developing, and if you are
 ready to submit a patch then fork your own copy and do a pull request.
 
-##  clojure.tools.deps and Leiningen Support
+## clojure.tools.deps and Leiningen Support
 
 Overtone and its dependencies are on http://clojars.org, and the
 dependency for your `deps.edn` is:
@@ -205,3 +201,13 @@ or for your `project.clj` (Leiningen)
 ## Contributors
 
 See: https://github.com/overtone/overtone/graphs/contributors
+
+## Development
+
+### Testing
+
+To run tests:
+
+```
+clj -X:test
+```
